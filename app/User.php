@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use Illuminate\Notifications\Notifiable;
+
+//MongoDB Eloquent Model
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 class User extends Eloquent implements Authenticatable
 {

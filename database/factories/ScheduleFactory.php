@@ -8,7 +8,7 @@ use App\Address;
 
 $factory->define(Schedule::class, function (Faker $faker) {
     return [
-        'name' => $faker->randomElement('lighting_schedule','absence_schedule'),
+        'name' => $faker->randomElement($array = array ('lighting_schedule','absence_schedule')),
         'schedule_settings' =>[
             [
                 "day" => "monday",
