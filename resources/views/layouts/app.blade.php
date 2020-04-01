@@ -49,11 +49,24 @@
                                 </li>
                             @endif
                         @else
+                        @if (Auth::check())
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{-- route('Security') --}}">{{ __('Security') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{-- route('Light') --}}">{{ __('Light') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{-- route('Fan') --}}">{{ __('Fan') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{-- route('Gas') --}}">{{ __('Gas') }}</a>
+                            </li>
+                        @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} {{ Auth::user()->last_name }}<span class="caret"></span>
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
