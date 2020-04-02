@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -51,16 +51,16 @@
                         @else
                         @if (Auth::check())
                             <li class="nav-item">
-                                <a class="nav-link" href="{{-- route('Security') --}}">{{ __('Security') }}</a>
+                                <a class="nav-link" href="{{ route('security') }}">{{ __('Security') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{-- route('Light') --}}">{{ __('Light') }}</a>
+                                <a class="nav-link" href="{{ route('light') }}">{{ __('Light') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{-- route('Fan') --}}">{{ __('Fan') }}</a>
+                                <a class="nav-link" href="{{ route('fan') }}">{{ __('Fan') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{-- route('Gas') --}}">{{ __('Gas') }}</a>
+                                <a class="nav-link" href="{{ route('gas') }}">{{ __('Gas') }}</a>
                             </li>
                         @endif
                             <li class="nav-item dropdown">
@@ -68,6 +68,9 @@
                                     {{ Auth::user()->name }} {{ Auth::user()->last_name }}<span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('account') }}">
+                                        {{ __('Account') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -19,4 +19,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/security', 'SecurityController@index')->name('security')->middleware('auth');
+
+Route::get('/light', 'LightController@index')->name('light')->middleware('auth');
+
+Route::get('/gas', 'GasController@index')->name('gas')->middleware('auth');
+
+Route::get('/fan', 'FanController@index')->name('fan')->middleware('auth');
+
+Route::get('/account', 'AccountController@index')->name('account')->middleware('auth');
+
 // ->middleware('auth') RUTA PROTEGIDA
