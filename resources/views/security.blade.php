@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Security</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,48 +14,48 @@
                         </div>
                     @endif
 
-                    <h1 class="text-center">{{ __('Welcome') }}</h1>
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-schedule-tab" data-toggle="tab" href="#nav-schedule" role="tab" aria-controls="nav-schedule" aria-selected="true">Schedule</a>
+                            <a class="nav-item nav-link" id="nav-video-tab" data-toggle="tab" href="#nav-video" role="tab" aria-controls="nav-video" aria-selected="false">Video</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-schedule" role="tabpanel" aria-labelledby="nav-schelude-tab">
 
-                    <div class="row">
-                        <div class="col-sm-3 col-6">
-                            <a href="{{ route('security') }}">
-                                <div class="card">
-                                    <div class="card-body">
-                                    <h5 class="card-title text-center">{{ __('Security') }}</h5>
-                                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn3.iconfinder.com%2Fdata%2Ficons%2Fgoogle-material-design-icons%2F48%2Fic_security_48px-512.png&f=1&nofb=1" class="card-img-top" alt="...">
-                                    </div>
-                                </div>
-                            </a>
+                            {{$schedules}}
+
+                            {{--<table class="table table-light">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Day</th>
+                                        <th>Start Time</th>
+                                        <th>End Time</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                     @foreach($schedules->$schedule_settings as $day)
+                                    <tr>
+                                        <td>{{$day->Nombre}}</td>
+                                        <td>{{$day->ApellidoPaterno}}</td>
+                                        <td>{{$day->ApellidoMaterno}}</td>
+                                        <td>{{$day->Correo}}</td>
+                                        <td>
+                                            <a href="{{ url('/security/'.$day->day.'/edit') }}">Edit</a>
+                                            <form method="post" action="{{ url('/security/'.$day->day) }}">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                                <button type="submit" onclick="return confirm('¿Borrar?');">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>--}}
                         </div>
-                        <div class="col-sm-3 col-6">
-                            <a href="{{ route('light') }}">
-                                <div class="card">
-                                    <div class="card-body">
-                                    <h5 class="card-title text-center">{{ __('Light') }}</h5>
-                                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fios%2F1600%2Flight-on.png&f=1&nofb=1" class="card-img-top" alt="...">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 col-6">
-                            <a href="{{ route('fan') }}">
-                                <div class="card">
-                                    <div class="card-body">
-                                    <h5 class="card-title text-center">{{ __('Fan') }}</h5>
-                                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fpng%2F512%2F79%2F79636.png&f=1&nofb=1" class="card-img-top" alt="...">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 col-6">
-                            <a href="{{ route('gas') }}">
-                                <div class="card">
-                                    <div class="card-body">
-                                    <h5 class="card-title text-center">{{ __('Gas') }}</h5>
-                                    <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ficons.iconarchive.com%2Ficons%2Ficons8%2Fandroid%2F512%2FIndustry-Gas-icon.png&f=1&nofb=1" class="card-img-top" alt="...">
-                                    </div>
-                                </div>
-                            </a>
+                        <div class="tab-pane fade" id="nav-video" role="tabpanel" aria-labelledby="nav-video-tab">
+                            video
                         </div>
                     </div>
 

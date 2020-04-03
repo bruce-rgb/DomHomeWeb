@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller; //new
 use Illuminate\Http\Request;
+use App\Schedule;
 
 class SecurityController extends Controller
 {
@@ -13,7 +16,14 @@ class SecurityController extends Controller
      */
     public function index()
     {
-        return view('security');
+        $schedules = Schedule::where('address_id', Auth::user()->address_id )->take(10)->get();
+        //$schedule = json_decode(json_encode($schedules), true);
+        //$day = $schedule['schedule_settings'];
+        $days = Schedule::where('author.name', 'John')
+        ->take(10)
+        ->get();
+
+        return view('security', compact('schedules'));
     }
 
     /**
