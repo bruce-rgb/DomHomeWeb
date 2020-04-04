@@ -34,7 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @if (Auth::check())
-                            <li class="nav-item">
+                        <li class="nav-item">
                                 <a class="nav-link" href="{{ route('security') }}">{{ __('Security') }}</a>
                             </li>
                             <li class="nav-item">
@@ -46,6 +46,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('gas') }}">{{ __('Gas') }}</a>
                             </li>
+                            <button type="button" class="btn btn-light">
+                                Notifications <span class="badge badge-secondary">4</span>
+                            </button>
                         @endif
                     </ul>
 

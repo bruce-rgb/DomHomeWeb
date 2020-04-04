@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SchedulesTableSeeder extends Seeder
+class GasesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class SchedulesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Schedule::class, 4)->create();
+        factory(App\Gas::class, 2)->create();
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSchedulesTable extends Migration
+class CreateGasesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateSchedulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('gases', function (Blueprint $table) {
             //$table->increments('id');
             $table->string('name');
-            $table->json('schedule_settings');
+            $table->enum('status', ['on', 'off']);
+            $table->time('time');
 
             //relaciones
             $table->string('address_id');
-
-            //$table->foreign('address_id')->references('_id')->on('addresses')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });
@@ -34,6 +33,6 @@ class CreateSchedulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schedules');
+        Schema::dropIfExists('gases');
     }
 }

@@ -29,4 +29,6 @@ Route::get('/fan', 'FanController@index')->name('fan')->middleware('auth');
 
 Route::get('/account', 'AccountController@index')->name('account')->middleware('auth');
 
+Route::get('/notifications', 'NotificationsController@index')->name('notification')->middleware('auth');
+
 // ->middleware('auth') RUTA PROTEGIDA

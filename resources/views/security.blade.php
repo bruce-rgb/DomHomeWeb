@@ -18,6 +18,7 @@
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-schedule-tab" data-toggle="tab" href="#nav-schedule" role="tab" aria-controls="nav-schedule" aria-selected="true">Schedule</a>
                             <a class="nav-item nav-link" id="nav-video-tab" data-toggle="tab" href="#nav-video" role="tab" aria-controls="nav-video" aria-selected="false">Video</a>
+                            <a class="nav-item nav-link" id="nav-door-tab" data-toggle="tab" href="#nav-door" role="tab" aria-controls="nav-door" aria-selected="false">Door</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
@@ -55,7 +56,10 @@
                             </table>--}}
                         </div>
                         <div class="tab-pane fade" id="nav-video" role="tabpanel" aria-labelledby="nav-video-tab">
-                            video
+                            Video
+                        </div>
+                        <div class="tab-pane fade" id="nav-door" role="tabpanel" aria-labelledby="nav-door-tab">
+                            Door
                         </div>
                     </div>
 
