@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller; //new
 use Illuminate\Http\Request;
+use App\Schedule;
+use App\Light;
 
 class LightController extends Controller
 {
@@ -13,7 +17,24 @@ class LightController extends Controller
      */
     public function index()
     {
-        return view('light');
+        $schedule =
+            Schedule::where('address_id', Auth::user()->address_id )
+            ->where('name', 'lighting_schedule')
+            ->get();
+        $data = json_decode(json_encode($schedule), true);
+
+        $data = $data[0];
+        $schedule_id = $data['_id'];
+        $data = $data['schedule_settings'];
+
+
+        $light =
+            Light::where('schedule_id',$schedule_id)
+            ->get();
+
+        $lights = json_decode(json_encode($light), true);
+
+        return view('light', compact('data','lights'));
     }
 
     /**

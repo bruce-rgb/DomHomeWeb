@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -46,7 +47,8 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('gas') }}">{{ __('Gas') }}</a>
                             </li>
-                            <button type="button" class="btn btn-light">
+
+                            <button type="button" class="btn btn-light" onclick="location.href='{{ route('notification') }}'">
                                 Notifications <span class="badge badge-secondary">4</span>
                             </button>
                         @endif
@@ -78,7 +80,9 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
+                                    <a class="dropdown-item">
+                                        {{ 'addres id: '.Auth::user()->address_id }}
+                                    </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>

@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
         factory(App\User::class, 3)->create();
 
         App\User::create([
-            'name' => 'Buce',
+            'name' => 'Bruce',
             'last_name' => 'Robinson',
             'email' => 'bruce123@live.com.mx',
             'email_verified_at' => now(),

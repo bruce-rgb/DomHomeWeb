@@ -20,7 +20,7 @@ class CreateAddressesTable extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('country');
-            $table->integer('PIN');
+            $table->integer('PIN')->unique();
             $table->json('microcontrollers');
 
             $table->timestamps();

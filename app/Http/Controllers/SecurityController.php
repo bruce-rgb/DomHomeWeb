@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller; //new
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB; //new
 use Illuminate\Http\Request;
 use App\Schedule;
 
@@ -16,14 +17,16 @@ class SecurityController extends Controller
      */
     public function index()
     {
-        $schedules = Schedule::where('address_id', Auth::user()->address_id )->take(10)->get();
-        //$schedule = json_decode(json_encode($schedules), true);
-        //$day = $schedule['schedule_settings'];
-        $days = Schedule::where('author.name', 'John')
-        ->take(10)
-        ->get();
+        $schedule =
+            Schedule::where('address_id', Auth::user()->address_id )
+            ->where('name', 'absence_schedule')
+            ->get();
+        $data = json_decode(json_encode($schedule), true);
+        $data = $data[0];
+        $schedule_id = $data['_id'];
+        $data = $data['schedule_settings'];
 
-        return view('security', compact('schedules'));
+        return view('security', compact('data','schedule_id'));
     }
 
     /**
@@ -78,7 +81,11 @@ class SecurityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $notaUpdate = Nota::find($id);
+        $notaUpdate->nombre = $request->nombre;
+        $notaUpdate->descripcion = $request->descripcion;
+        $notaUpdate->save();
+        return back()->with('update','La nota se ha actualizado correctamente');
     }
 
     /**
@@ -87,7 +94,31 @@ class SecurityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteOne($day)
+    {
+        $schedule =
+            Schedule::where('address_id', Auth::user()->address_id )
+            ->where('name', 'absence_schedule')
+            ->get();
+        $data = json_decode(json_encode($schedule), true);
+        $data = $data[0];
+        $schedule_id = $data['_id'];
+
+        DB::table('schedules')
+            ->where('_id', $schedule_id )
+            ->update(['schedule_settings'=>
+                [$day => '']
+            ]);
+        echo "lol";
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteAll($id)
     {
         //
     }
