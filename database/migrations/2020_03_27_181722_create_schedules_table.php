@@ -16,14 +16,14 @@ class CreateSchedulesTable extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             //$table->bigIncrements('id');
             $table->string('name');
-            $table->json('schedule_settings');
+            $table->string('day');
+            $table->string('start_time');
+            $table->string('end_time');
 
             //relaciones
             $table->string('address_id');
 
-            //$table->foreign('address_id')->references('_id')->on('addresses')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

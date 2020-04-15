@@ -21,16 +21,9 @@ class SecurityController extends Controller
             Schedule::where('address_id', Auth::user()->address_id )
             ->where('name', 'absence_schedule')
             ->get();
-        $data = json_decode(json_encode($schedule), true);
+        $schedule = json_decode(json_encode($schedule),true);
 
-        $data = $data[0];
-
-        $schedule_id = $data['_id'];
-
-        $schedule = $data['schedule_settings'];
-        $days = array_keys($schedule);
-
-        return view('security', compact('schedule','days','schedule_id'));
+        return view('security', compact('schedule'));
     }
 
     /**
@@ -98,39 +91,19 @@ class SecurityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function deleteOne($day)
+    public function deleteOne($id)
     {
-        $schedule =
-            Schedule::where('address_id', Auth::user()->address_id )
-            ->where('name', 'absence_schedule')
-            ->get();
-        $data = json_decode(json_encode($schedule), true);
-        $data = $data[0];
-        $schedule_id = $data['_id'];
-
-        // DB::table('schedules')
-        //     ->updateOrInsert(
-        //     ['_id' => $schedule_id ],
-        //     [
-        //         'schedule_settings'=>[
-        //             $day => [
-        //                 'start_time' => '',
-        //                 'end_time' => '',
-        //             ]
-        //         ]
-        //     ]
-        // );
+        $update = [
+            'start_time' => '',
+            'end_time' => '',
+        ];
 
         DB::table('schedules')
-            ->where('_id', $schedule_id)
-            ->update(['schedule_settings'=>
-                [
-                    $day => [
-                        'start_time' => '',
-                        'end_time' => '',
-                    ]
-                ]
-            ]);
+        ->where('_id', $id)
+        ->update(
+            ['$set' => $update]
+        );
+        return back()->with('deleteOne','Eliminación exitosa');
     }
 
     /**
@@ -139,8 +112,20 @@ class SecurityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function deleteAll($id)
+    public function deleteAll()
     {
-        //
+        $update = [
+            'start_time' => '',
+            'end_time' => '',
+        ];
+
+        DB::table('schedules')
+        ->where('name', 'absence_schedule' )
+        ->where('address_id', Auth::user()->address_id)
+        ->update(
+            ['$set' => $update]
+        );
+        
+        return back()->with('deleteOne','Eliminación exitosa');
     }
 }

@@ -54,7 +54,6 @@
                                                         <input type="time" class="form-control" id="end_time">
                                                     </div>
                                                 </div>
-
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
                                                     <label class="form-check-label" for="inlineCheckbox1">Monday</label>
@@ -83,9 +82,7 @@
                                                     <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
                                                     <label class="form-check-label" for="inlineCheckbox2">sunday</label>
                                                 </div><br><br>
-
                                                 <button type="submit" class="btn btn-success btn-block">Save</button>
-
                                             </form>
 
                                             @if (session('agregar'))
@@ -94,20 +91,19 @@
                                                 </div>
                                             @endif
 
-                                            {{'schedule_id: '.$schedule_id}}
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="text-center col-sm-7 col-12">
-                                    <table class="table table-light">
+                                    <table class="table table-bordered table-sm table-light">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th>Day</th>
                                                 <th>Start Time</th>
                                                 <th>End Time</th>
                                                 <th>
-                                                    <form method="post" action="{{ url('/security/') }}">
+                                                    <form action="{{route('security-deleteAll')}}" method="POST">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <button type="submit" onclick="return confirm('¿Borrar?');">Delete all</button>
@@ -115,14 +111,14 @@
                                                 </th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody class="table-hover">
                                              @foreach($schedule as $day)
                                             <tr>
-                                                <td>{{$days[($loop->iteration)-1]}}</td>
+                                                <td>{{$day['day']}}</td>
                                                 <td>{{$day['start_time']}}</td>
                                                 <td>{{$day['end_time']}}</td>
                                                 <td>
-                                                    <form action="{{route('security-deleteOne', $days[($loop->iteration)-1] )}}" method="POST" class="d-inline">
+                                                    <form action="{{route('security-deleteOne', $day['_id'] )}}" method="POST" class="d-inline">
                                                         @method('DELETE')
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger">
