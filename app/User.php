@@ -8,8 +8,8 @@ use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use Illuminate\Notifications\Notifiable;
 
 //MongoDB Eloquent Model
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-class User extends Eloquent implements Authenticatable
+use Jenssegers\Mongodb\Eloquent\Model as Model;
+class User extends Model implements Authenticatable
 {
     use AuthenticableTrait;
 

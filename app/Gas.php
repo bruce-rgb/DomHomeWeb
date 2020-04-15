@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use Jenssegers\Mongodb\Eloquent\Model as Model;
 
-class Gas extends Eloquent
+class Gas extends Model
 {
     protected $fillable = [
         'name',

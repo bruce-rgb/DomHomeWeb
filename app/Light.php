@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use Jenssegers\Mongodb\Eloquent\Model as Model;
 
-class Light extends Eloquent
+class Light extends Model
 {
     protected $fillable = [
         'name',

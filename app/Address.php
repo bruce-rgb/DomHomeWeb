@@ -2,9 +2,9 @@
 
 namespace App;
 //MongoDB Eloquent Model
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use Jenssegers\Mongodb\Eloquent\Model as Model;
 
-class Address extends Eloquent
+class Address extends Model
 {
     protected $primaryKey = '_id';
     protected $fillable = [
