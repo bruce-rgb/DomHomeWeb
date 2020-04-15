@@ -24,15 +24,14 @@
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-schedule" role="tabpanel" aria-labelledby="nav-schelude-tab">
                             <br>
-
-                            {{print_r($schedule)}}
-                            <br>
+                            {{--print_r($schedule)--}}
 
                             <div class="row">
                                 <div class="col-sm-5 col-12">
                                     <div class="card">
                                         <div class="card-body">
-                                            <form action="{{--route('store')--}}" method="POST">
+                                            <form action="{{route('security-set')}}" method="POST">
+
                                                 @csrf
                                                 <h4 class="text-center">Set configuration</h4>
 
@@ -45,52 +44,55 @@
                                                 <div class="form-group row">
                                                     <label for="start_time" class="col-sm-4 col-form-label">Start Time</label>
                                                     <div class="col-sm-8">
-                                                        <input type="time" class="form-control" id="start_time">
+                                                        <input type="time" class="form-control" id="start_time" name="start_time" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="end_time" class="col-sm-4 col-form-label">End Time</label>
                                                     <div class="col-sm-8">
-                                                        <input type="time" class="form-control" id="end_time">
+                                                        <input type="time" class="form-control" id="end_time" name="end_time" required>
                                                     </div>
                                                 </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                    <label class="form-check-label" for="inlineCheckbox1">Monday</label>
+
+                                                @foreach($schedule as $day)
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox{{$loop->iteration}}" value="{{$day['_id']}}" name="days[{{$loop->iteration}}]">
+                                                        <label class="form-check-label" for="inlineCheckbox{{$loop->iteration}}">{{$day['day']}}</label>
+                                                    </div>
+                                                @endforeach
+
+                                                {{--<div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="monday" name="days[0]">
+                                                    <label class="form-check-label" for="inlineCheckbox1">monday</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="days[1]">
                                                     <label class="form-check-label" for="inlineCheckbox2">tuesday</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                    <label class="form-check-label" for="inlineCheckbox2">wednesday</label>
+                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="days[2]">
+                                                    <label class="form-check-label" for="inlineCheckbox3">wednesday</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                    <label class="form-check-label" for="inlineCheckbox2">thursday</label>
+                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="days[3]">
+                                                    <label class="form-check-label" for="inlineCheckbox4">thursday</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                    <label class="form-check-label" for="inlineCheckbox2">friday</label>
+                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name="days[4]">
+                                                    <label class="form-check-label" for="inlineCheckbox5">friday</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                    <label class="form-check-label" for="inlineCheckbox2">saturday</label>
+                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox6" name="days[5]">
+                                                    <label class="form-check-label" for="inlineCheckbox6">saturday</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                    <label class="form-check-label" for="inlineCheckbox2">sunday</label>
-                                                </div><br><br>
+                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox7" name="days[6]">
+                                                    <label class="form-check-label" for="inlineCheckbox7">sunday</label>
+                                                </div>--}}
+
+                                                <br><br>
                                                 <button type="submit" class="btn btn-success btn-block">Save</button>
                                             </form>
-
-                                            @if (session('agregar'))
-                                                <div class="alert alert-success mt-3" role="alert">
-                                                    {{session('agregar')}}
-                                                </div>
-                                            @endif
-
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +114,7 @@
                                             </tr>
                                         </thead>
                                         <tbody class="table-hover">
-                                             @foreach($schedule as $day)
+                                            @foreach($schedule as $day)
                                             <tr>
                                                 <td>{{$day['day']}}</td>
                                                 <td>{{$day['start_time']}}</td>

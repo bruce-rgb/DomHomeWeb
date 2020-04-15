@@ -10,11 +10,6 @@ use App\Schedule;
 
 class SecurityController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $schedule =
@@ -26,71 +21,27 @@ class SecurityController extends Controller
         return view('security', compact('schedule'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function set(Request $request)
     {
-        //
+        //print_r($request->all());
+
+        $update = [
+            'start_time' => $request->input('start_time'),
+            'end_time' => $request->input('end_time'),
+        ];
+
+        foreach( $request->input('days') as $day => $value) {
+            DB::table('schedules')
+            ->where('_id', $value )
+            ->update(
+                ['$set' => $update]
+            );
+        }
+
+        return back()->with('set','Configuración exitosa');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $notaUpdate = Nota::find($id);
-        $notaUpdate->nombre = $request->nombre;
-        $notaUpdate->descripcion = $request->descripcion;
-        $notaUpdate->save();
-        return back()->with('update','La nota se ha actualizado correctamente');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function deleteOne($id)
     {
         $update = [
@@ -103,15 +54,9 @@ class SecurityController extends Controller
         ->update(
             ['$set' => $update]
         );
-        return back()->with('deleteOne','Eliminación exitosa');
+        return back()->with('deleteAll','Eliminación exitosa');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function deleteAll()
     {
         $update = [
@@ -125,7 +70,7 @@ class SecurityController extends Controller
         ->update(
             ['$set' => $update]
         );
-        
+
         return back()->with('deleteOne','Eliminación exitosa');
     }
 }

@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/security', 'SecurityController@index')->name('security')->middleware('auth');
-Route::put('/security/update', 'SecurityController@update')->name('security-update')->middleware('auth');
+Route::post('/security/set', 'SecurityController@set')->name('security-set')->middleware('auth');
 Route::delete('/security/delete/{day}', 'SecurityController@deleteOne')->name('security-deleteOne')->middleware('auth');
 Route::delete('/security/delete', 'SecurityController@deleteAll')->name('security-deleteAll')->middleware('auth');
 
