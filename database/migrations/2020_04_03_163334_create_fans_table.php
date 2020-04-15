@@ -14,7 +14,7 @@ class CreateFansTable extends Migration
     public function up()
     {
         Schema::create('fans', function (Blueprint $table) {
-            //$table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->enum('mode', ['auto', 'manual'])->default('auto');;
             $table->enum('status', ['on', 'off']);

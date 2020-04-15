@@ -14,7 +14,7 @@ class CreateLightsTable extends Migration
     public function up()
     {
         Schema::create('lights', function (Blueprint $table) {
-            //$table->bigIncrements('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->enum('status', ['on', 'off']);
 

@@ -6,7 +6,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Model;
 
 class Address extends Model
 {
-    protected $primaryKey = '_id';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'street',
         'number',

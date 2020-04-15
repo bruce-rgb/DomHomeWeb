@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Address::class, function (Faker $faker) {
 
     return [
+        'id' => $faker->randomNumber(),
         'street' => $faker->streetName,
         'number' => $faker->buildingNumber,
         'city' => $faker->city,
@@ -22,6 +23,10 @@ $factory->define(Address::class, function (Faker $faker) {
             [
                 'name'=> 'esp32cam',
                 'ip'=> '192.168.1.57'
+            ],
+            [
+                'name'=> 'arduino_uno',
+                'ip'=> '192.168.1.55'
             ]
         ]
     ];
