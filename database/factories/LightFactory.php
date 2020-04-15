@@ -8,10 +8,10 @@ use App\Schedule;
 
 $factory->define(Light::class, function (Faker $faker) {
     return [
-        'id' => $faker->randomNumber(),
+        //'id' => $faker->randomNumber(),
         'name' => $faker->randomElement($array = array ('light 1','light 2')),
         'status' => $faker->randomElement($array = array ('on','off')),
 
-        'schedule_id' => Schedule::where('name', 'lighting_schedule')->get()->random()->id,
+        'schedule_id' => Schedule::where('name', 'lighting_schedule')->get()->random()->_id,
     ];
 });

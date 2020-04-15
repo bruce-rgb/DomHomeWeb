@@ -13,7 +13,7 @@ class User extends Model implements Authenticatable
 {
     use AuthenticableTrait;
 
-    protected $primaryKey = 'id';
+    //protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.

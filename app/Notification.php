@@ -6,7 +6,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Model;
 
 class Notification extends Model
 {
-    protected $primaryKey = 'id';
+    //protected $primaryKey = 'id';
     protected $fillable = [
         'name',
         'description',

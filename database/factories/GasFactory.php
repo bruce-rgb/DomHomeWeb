@@ -8,10 +8,10 @@ use App\Address;
 
 $factory->define(Gas::class, function (Faker $faker) {
     return [
-        'id' => $faker->randomNumber(),
+        //'id' => $faker->randomNumber(),
         'name' => 'Gas',
         'status' => $faker->randomElement($array = array ('on','off')),
         'time' => '01:30:00',
-        'address_id' => Address::all()->random()->id,
+        'address_id' => Address::all()->random()->_id,
     ];
 });

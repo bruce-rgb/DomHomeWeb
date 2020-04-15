@@ -16,14 +16,14 @@ class UsersTableSeeder extends Seeder
         factory(App\User::class, 3)->create();
 
         App\User::create([
-            'id' => 1,
+            //'id' => 3,
             'name' => 'Bruce',
             'last_name' => 'Robinson',
             'email' => 'bruce123@live.com.mx',
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
             'remember_token' => Str::random(10),
-            'address_id' => Address::all()->random()->id,
+            'address_id' => Address::all()->random()->_id,
         ]);
 
     }
