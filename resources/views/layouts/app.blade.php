@@ -81,7 +81,7 @@
                                         {{ __('Logout') }}
                                     </a>
                                     <a class="dropdown-item">
-                                        {{ 'addres id: '.Auth::user()->address_id }}
+                                        {{ 'address id: '.Auth::user()->address_id }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf

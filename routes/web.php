@@ -37,4 +37,4 @@ Route::get('/notifications', 'NotificationController@index')->name('notification
 // ->middleware('auth') RUTA PROTEGIDA
 //Route::get('/name/{name?}', function($name = 'Bruce'){
 //  return "hola" . $name;
-//});ññ
+//});

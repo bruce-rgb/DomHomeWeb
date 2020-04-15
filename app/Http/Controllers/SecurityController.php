@@ -22,11 +22,15 @@ class SecurityController extends Controller
             ->where('name', 'absence_schedule')
             ->get();
         $data = json_decode(json_encode($schedule), true);
-        $data = $data[0];
-        $schedule_id = $data['_id'];
-        $data = $data['schedule_settings'];
 
-        return view('security', compact('data','schedule_id'));
+        $data = $data[0];
+
+        $schedule_id = $data['_id'];
+
+        $schedule = $data['schedule_settings'];
+        $days = array_keys($schedule);
+
+        return view('security', compact('schedule','days','schedule_id'));
     }
 
     /**
@@ -104,12 +108,29 @@ class SecurityController extends Controller
         $data = $data[0];
         $schedule_id = $data['_id'];
 
+        // DB::table('schedules')
+        //     ->updateOrInsert(
+        //     ['_id' => $schedule_id ],
+        //     [
+        //         'schedule_settings'=>[
+        //             $day => [
+        //                 'start_time' => '',
+        //                 'end_time' => '',
+        //             ]
+        //         ]
+        //     ]
+        // );
+
         DB::table('schedules')
-            ->where('_id', $schedule_id )
+            ->where('_id', $schedule_id)
             ->update(['schedule_settings'=>
-                [$day => '']
+                [
+                    $day => [
+                        'start_time' => '',
+                        'end_time' => '',
+                    ]
+                ]
             ]);
-        echo "lol";
     }
 
     /**

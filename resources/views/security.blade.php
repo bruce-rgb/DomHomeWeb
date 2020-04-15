@@ -25,6 +25,9 @@
                         <div class="tab-pane fade show active" id="nav-schedule" role="tabpanel" aria-labelledby="nav-schelude-tab">
                             <br>
 
+                            {{print_r($schedule)}}
+                            <br>
+
                             <div class="row">
                                 <div class="col-sm-5 col-12">
                                     <div class="card">
@@ -81,7 +84,7 @@
                                                     <label class="form-check-label" for="inlineCheckbox2">sunday</label>
                                                 </div><br><br>
 
-                                                <button type="submit" class="btn btn-success btn-block">Guardar</button>
+                                                <button type="submit" class="btn btn-success btn-block">Save</button>
 
                                             </form>
 
@@ -113,13 +116,13 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                             @foreach($data as $day)
+                                             @foreach($schedule as $day)
                                             <tr>
-                                                <td>{{$day['day']}}</td>
+                                                <td>{{$days[($loop->iteration)-1]}}</td>
                                                 <td>{{$day['start_time']}}</td>
                                                 <td>{{$day['end_time']}}</td>
                                                 <td>
-                                                    <form action="{{route('security-deleteOne', $day['day'])}}" method="POST" class="d-inline">
+                                                    <form action="{{route('security-deleteOne', $days[($loop->iteration)-1] )}}" method="POST" class="d-inline">
                                                         @method('DELETE')
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger">

@@ -10,40 +10,33 @@ $factory->define(Schedule::class, function (Faker $faker) {
     return [
         'name' => $faker->randomElement($array = array ('lighting_schedule','absence_schedule')),
         'schedule_settings' =>[
-            [
-                "day" => "monday",
+            "monday" =>[
 				"start_time" => $faker->time($format = 'H:i:s', $max = 'now') ,
-				"end_time" => $faker->time()
+                "end_time" => $faker->time()
             ],
-            [
-                "day" => "tuesday",
+            "tuesday" =>[
 				"start_time" => $faker->time($format = 'H:i:s', $max = 'now') ,
-				"end_time" => $faker->time()
+                "end_time" => $faker->time()
             ],
-            [
-                "day" => "wednesday",
+            "wednesday" =>[
 				"start_time" => $faker->time($format = 'H:i:s', $max = 'now') ,
-				"end_time" => $faker->time()
+                "end_time" => $faker->time()
             ],
-            [
-                "day" => "thursday",
+            "thursday" =>[
 				"start_time" => $faker->time($format = 'H:i:s', $max = 'now') ,
-				"end_time" => $faker->time()
+                "end_time" => $faker->time()
             ],
-            [
-                "day" => "friday",
+            "friday" =>[
 				"start_time" => $faker->time($format = 'H:i:s', $max = 'now') ,
-				"end_time" => $faker->time()
+                "end_time" => $faker->time()
             ],
-            [
-                "day" => "saturday",
+            "saturday" =>[
 				"start_time" => $faker->time($format = 'H:i:s', $max = 'now') ,
-				"end_time" => $faker->time()
+                "end_time" => $faker->time()
             ],
-            [
-                "day" => "sunday",
+            "sunday" =>[
 				"start_time" => $faker->time($format = 'H:i:s', $max = 'now') ,
-				"end_time" => $faker->time()
+                "end_time" => $faker->time()
             ],
         ],
         'address_id' => Address::all()->random()->_id,
