@@ -69,7 +69,7 @@
                                 </div>
 
                                 <div class="text-center col-sm-7 col-12">
-                                    <table class="table table-bordered table-sm table-light">
+                                    <table class="table table-bordered table-sm">
                                         <thead class="thead-light">
                                             <tr>
                                                 <th>Day</th>

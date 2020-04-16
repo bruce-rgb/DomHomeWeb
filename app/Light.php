@@ -10,6 +10,6 @@ class Light extends Model
     protected $fillable = [
         'name',
         'status',
-        'schelule_id',
+        'address_id',
     ];
 }

@@ -19,7 +19,7 @@ class CreateLightsTable extends Migration
             $table->enum('status', ['on', 'off']);
 
             //relaciones
-            $table->string('schelule_id');
+            $table->string('address_id');
 
             $table->timestamps();
         });

@@ -25,6 +25,9 @@ Route::delete('/security/delete/{day}', 'SecurityController@deleteOne')->name('s
 Route::delete('/security/delete', 'SecurityController@deleteAll')->name('security-deleteAll')->middleware('auth');
 
 Route::get('/light', 'LightController@index')->name('light')->middleware('auth');
+Route::post('/light/set', 'LightController@set')->name('light-set')->middleware('auth');
+Route::delete('/light/delete/{day}', 'LightController@deleteOne')->name('light-deleteOne')->middleware('auth');
+Route::delete('/light/delete', 'LightController@deleteAll')->name('light-deleteAll')->middleware('auth');
 
 Route::get('/gas', 'GasController@index')->name('gas')->middleware('auth');
 
