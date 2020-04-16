@@ -61,35 +61,6 @@
                                                     </div>
                                                 @endforeach
 
-                                                {{--<div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="monday" name="days[0]">
-                                                    <label class="form-check-label" for="inlineCheckbox1">monday</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="days[1]">
-                                                    <label class="form-check-label" for="inlineCheckbox2">tuesday</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="days[2]">
-                                                    <label class="form-check-label" for="inlineCheckbox3">wednesday</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="days[3]">
-                                                    <label class="form-check-label" for="inlineCheckbox4">thursday</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name="days[4]">
-                                                    <label class="form-check-label" for="inlineCheckbox5">friday</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox6" name="days[5]">
-                                                    <label class="form-check-label" for="inlineCheckbox6">saturday</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox7" name="days[6]">
-                                                    <label class="form-check-label" for="inlineCheckbox7">sunday</label>
-                                                </div>--}}
-
                                                 <br><br>
                                                 <button type="submit" class="btn btn-success btn-block">Save</button>
                                             </form>
