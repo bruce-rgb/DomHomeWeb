@@ -28,6 +28,7 @@ Route::get('/light', 'LightController@index')->name('light')->middleware('auth')
 Route::post('/light/set', 'LightController@set')->name('light-set')->middleware('auth');
 Route::delete('/light/delete/{day}', 'LightController@deleteOne')->name('light-deleteOne')->middleware('auth');
 Route::delete('/light/delete', 'LightController@deleteAll')->name('light-deleteAll')->middleware('auth');
+Route::post('/light/power', 'LightController@power')->name('light-power')->middleware('auth');
 
 Route::get('/gas', 'GasController@index')->name('gas')->middleware('auth');
 

@@ -28,7 +28,7 @@ class LightController extends Controller
         return view('light', compact('schedule', 'lights'));
     }
 
-    public function set(Request $request)
+    public function set(Request $request) //POST
     {
         //print_r($request->all());
 
@@ -46,7 +46,22 @@ class LightController extends Controller
         }
 
         return back()->with('set','Configuración exitosa');
+    }
 
+    public function power(Request $request)
+    {
+        //print_r($request->all());
+
+        $update = [
+            'status' => $request->input('status'),
+        ];
+
+            DB::table('lights')
+            ->where('_id', $request->input('_id') )
+            ->update(
+                ['$set' => $update]
+            );
+        return back()->with('power','Configuración exitosa');
     }
 
     public function deleteOne($id)

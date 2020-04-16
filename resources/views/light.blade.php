@@ -111,7 +111,7 @@
                         </div>
                         <div class="tab-pane fade" id="nav-control" role="tabpanel" aria-labelledby="nav-control-tab">
                             <br>
-                            <table class="table table-light">
+                            <table class="table table-bordered table-sm">
                                 <thead class="thead-light">
                                     <tr>
                                         <th>Name</th>
@@ -125,11 +125,18 @@
                                         <td>{{$light['name']}}</td>
                                         <td>{{$light['status']}}</td>
                                         <td>
-                                            <a href="{{ url('/light/'.$light['_id'].'/edit') }}">Edit</a>
-                                            <form method="post" action="{{ url('/light/'.$light['_id']) }}">
-                                                {{ csrf_field() }}
-                                                {{ method_field('DELETE') }}
-                                                <button type="submit" onclick="return confirm('¿Borrar?');">Delete</button>
+                                            <form method="POST" action="{{route('light-power')}}">
+                                            {{ csrf_field() }}
+                                            <input type="text" hidden value="{{$light['_id']}}" name="_id">
+                                            <input type="text" hidden value="@if($light['status'] == "on") {{"off"}} @else {{"on"}} @endif" name="status">
+
+                                                <button type="submit" onclick="return confirm('¿Aceptar?');">
+                                                    @if($light['status'] == "on")
+                                                        {{"off"}}
+                                                        @else
+                                                        {{"on"}}
+                                                    @endif
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>
