@@ -1,3 +1,7 @@
+@php
+    $notifications = App\Notification::where('address_id', Auth::user()->address_id)->count()
+@endphp
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -49,7 +53,7 @@
                             </li>
 
                             <button type="button" class="btn btn-light" onclick="location.href='{{ route('notification') }}'">
-                                Notifications <span class="badge badge-secondary">4</span>
+                                Notifications <span class="badge badge-secondary">{{$notifications}}</span>
                             </button>
                         @endif
                     </ul>
