@@ -3,82 +3,55 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB; //new
+use App\Gas;
 
 class GasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('gas');
+
+        $gas =
+            Gas::where('address_id', Auth::user()->address_id )
+            ->get();
+        $gas = json_decode(json_encode($gas),true);
+        $gas = $gas[0];
+
+        return view('gas', compact('gas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function power(Request $request)
     {
-        //
+        //print_r($request->all());
+
+        $update = [
+            'status' => $request->input('status'),
+        ];
+
+        DB::table('gases')
+        ->where('address_id', Auth::user()->address_id )
+        ->update(
+            ['$set' => $update]
+        );
+
+        return back()->with('power','Configuración exitosa');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function time(Request $request)
     {
-        //
-    }
+        //print_r($request->all());
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $update = [
+            'time' => $request->input('time'),
+        ];
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        DB::table('gases')
+        ->where('address_id', Auth::user()->address_id )
+        ->update(
+            ['$set' => $update]
+        );
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return back()->with('time','Configuración exitosa');
     }
 }

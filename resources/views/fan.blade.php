@@ -72,7 +72,7 @@
                                         <div class="form-group row">
                                             <label for="mode" class="col-sm-4 col-form-label">Set</label>
                                             <div class="col-sm-8">
-                                            <input type="number" class="form-control" value="{{$fan['temperature']}}" name="temperature" min="10" max="35" required>
+                                                <input type="number" class="form-control" value="{{$fan['temperature']}}" name="temperature" min="10" max="35" required>
                                             </div>
                                         </div>
 

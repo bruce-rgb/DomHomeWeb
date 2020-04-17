@@ -31,6 +31,8 @@ Route::delete('/light/delete', 'LightController@deleteAll')->name('light-deleteA
 Route::post('/light/power', 'LightController@power')->name('light-power')->middleware('auth');
 
 Route::get('/gas', 'GasController@index')->name('gas')->middleware('auth');
+Route::post('/gas/power', 'GasController@power')->name('gas-power')->middleware('auth');
+Route::post('/gas/time', 'GasController@time')->name('gas-time')->middleware('auth');
 
 Route::get('/fan', 'FanController@index')->name('fan')->middleware('auth');
 Route::post('/fan/mode', 'FanController@mode')->name('fan-mode')->middleware('auth');

@@ -14,49 +14,50 @@
                         </div>
                     @endif
 
-                    <h1 class="text-center">{{ __('Welcome') }}</h1>
-
+                    {{--print_r($gas)--}}
                     <div class="row">
-                        <div class="col-sm-3 col-6">
-                            <a href="{{ route('security') }}">
-                                <div class="card">
-                                    <div class="card-body">
-                                    <h5 class="card-title text-center">{{ __('Security') }}</h5>
-                                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn3.iconfinder.com%2Fdata%2Ficons%2Fgoogle-material-design-icons%2F48%2Fic_security_48px-512.png&f=1&nofb=1" class="card-img-top" alt="...">
-                                    </div>
+                        <div class="col-sm-4 col-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">{{ __('Status: ') }} @if($gas['status'] == "on") {{"On"}} @else {{"Off"}} @endif</h5> <br>
+                                    <form action="{{route('gas-power')}}" method="POST">
+                                        {{ csrf_field() }}
+
+                                        <div class="form-group row">
+                                            <label for="mode" class="col-sm-4 col-form-label">Set</label>
+                                            <div class="col-sm-8">
+                                                <select name="status" class="form-control" required>
+                                                    <option value="on" @if($gas['status'] == "on") {{"selected"}} @endif>on</option>
+                                                    <option value="off" @if($gas['status'] == "off") {{"selected"}} @endif>off</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-success btn-block">Save</button>
+                                    </form>
                                 </div>
-                            </a>
+                            </div>
                         </div>
-                        <div class="col-sm-3 col-6">
-                            <a href="{{ route('light') }}">
-                                <div class="card">
-                                    <div class="card-body">
-                                    <h5 class="card-title text-center">{{ __('Light') }}</h5>
-                                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.icons8.com%2Fios%2F1600%2Flight-on.png&f=1&nofb=1" class="card-img-top" alt="...">
-                                    </div>
+                        <div class="col-sm-4 col-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">{{ __('Set Time: ') }} {{$gas['time']}}</h5> <br>
+                                    <form action="{{route('gas-time')}}" method="POST">
+                                        {{ csrf_field() }}
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-8">
+                                                <input type="number" class="form-control" value="{{$gas['time']}}" name="time" min="30" max="1440" required>
+                                            </div>
+                                            <label for="mode" class="col-sm-4 col-form-label">minutes</label>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-success btn-block">Save</button>
+                                    </form>
                                 </div>
-                            </a>
+                            </div>
                         </div>
-                        <div class="col-sm-3 col-6">
-                            <a href="{{ route('fan') }}">
-                                <div class="card">
-                                    <div class="card-body">
-                                    <h5 class="card-title text-center">{{ __('Fan') }}</h5>
-                                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fpng%2F512%2F79%2F79636.png&f=1&nofb=1" class="card-img-top" alt="...">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm-3 col-6">
-                            <a href="{{ route('gas') }}">
-                                <div class="card">
-                                    <div class="card-body">
-                                    <h5 class="card-title text-center">{{ __('Gas') }}</h5>
-                                    <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Ficons.iconarchive.com%2Ficons%2Ficons8%2Fandroid%2F512%2FIndustry-Gas-icon.png&f=1&nofb=1" class="card-img-top" alt="...">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+
                     </div>
 
                 </div>
