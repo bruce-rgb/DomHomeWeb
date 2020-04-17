@@ -34,6 +34,8 @@ Route::get('/gas', 'GasController@index')->name('gas')->middleware('auth');
 
 Route::get('/fan', 'FanController@index')->name('fan')->middleware('auth');
 Route::post('/fan/mode', 'FanController@mode')->name('fan-mode')->middleware('auth');
+Route::post('/fan/power', 'FanController@power')->name('fan-power')->middleware('auth');
+Route::post('/fan/temperature', 'FanController@temperature')->name('fan-temperature')->middleware('auth');
 
 Route::get('/account', 'AccountController@index')->name('account')->middleware('auth');
 

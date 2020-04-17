@@ -38,4 +38,38 @@ class FanController extends Controller
         return back()->with('set-mode','Configuración exitosa');
     }
 
+    public function power(Request $request)
+    {
+        //print_r($request->all());
+
+        $update = [
+            'status' => $request->input('status'),
+        ];
+
+        DB::table('fans')
+        ->where('address_id', Auth::user()->address_id )
+        ->update(
+            ['$set' => $update]
+        );
+
+        return back()->with('power','Configuración exitosa');
+    }
+
+    public function temperature(Request $request)
+    {
+        //print_r($request->all());
+
+        $update = [
+            'temperature' => $request->input('temperature'),
+        ];
+
+        DB::table('fans')
+        ->where('address_id', Auth::user()->address_id )
+        ->update(
+            ['$set' => $update]
+        );
+
+        return back()->with('temperature','Configuración exitosa');
+    }
+
 }

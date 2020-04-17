@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    {{print_r($fan)}}
+                    {{--print_r($fan)--}}
 
                     <div class="row">
                         <div class="col-sm-4 col-6">
@@ -39,20 +39,45 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-sm-5 col-6">
+                        <div class="col-sm-4 col-6">
                                 <div class="card">
                                     <div class="card-body">
-                                    <h5 class="card-title text-center">{{ __('Status') }}</h5>
+                                        <h5 class="card-title text-center">{{ __('Status: ') }} @if($fan['status'] == "on") {{"On"}} @else {{"Off"}} @endif</h5> <br>
+                                        <form action="{{route('fan-power')}}" method="POST">
+                                            {{ csrf_field() }}
 
+                                            <div class="form-group row">
+                                                <label for="mode" class="col-sm-4 col-form-label">Set</label>
+                                                <div class="col-sm-8">
+                                                    <select name="status" class="form-control" required>
+                                                        <option value="on" @if($fan['status'] == "on") {{"selected"}} @endif>on</option>
+                                                        <option value="off" @if($fan['status'] == "off") {{"selected"}} @endif>off</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-success btn-block">Save</button>
+                                        </form>
                                     </div>
                                 </div>
                             </a>
                         </div>
-                        <div class="col-sm-3 col-6">
+                        <div class="col-sm-4 col-6">
                                 <div class="card">
                                     <div class="card-body">
-                                    <h5 class="card-title text-center">{{ __('Temperature') }}</h5>
+                                    <h5 class="card-title text-center">{{ __('Temperature: ')}} {{$fan['temperature'] }}</h5> <br>
+                                    <form action="{{route('fan-temperature')}}" method="POST">
+                                        {{ csrf_field() }}
 
+                                        <div class="form-group row">
+                                            <label for="mode" class="col-sm-4 col-form-label">Set</label>
+                                            <div class="col-sm-8">
+                                            <input type="number" class="form-control" value="{{$fan['temperature']}}" name="temperature" min="10" max="35" required>
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-success btn-block">Save</button>
+                                    </form>
                                     </div>
                                 </div>
                             </a>
