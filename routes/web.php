@@ -33,6 +33,7 @@ Route::post('/light/power', 'LightController@power')->name('light-power')->middl
 Route::get('/gas', 'GasController@index')->name('gas')->middleware('auth');
 
 Route::get('/fan', 'FanController@index')->name('fan')->middleware('auth');
+Route::post('/fan/mode', 'FanController@mode')->name('fan-mode')->middleware('auth');
 
 Route::get('/account', 'AccountController@index')->name('account')->middleware('auth');
 
