@@ -42,6 +42,7 @@ Route::post('/fan/temperature', 'FanController@temperature')->name('fan-temperat
 Route::get('/account', 'AccountController@index')->name('account')->middleware('auth');
 
 Route::get('/notifications', 'NotificationController@index')->name('notification')->middleware('auth');
+Route::get('/notifications/viewed/{_id}', 'NotificationController@viewed')->name('notification-viewed')->middleware('auth');
 
 // ->middleware('auth') RUTA PROTEGIDA
 //Route::get('/name/{name?}', function($name = 'Bruce'){

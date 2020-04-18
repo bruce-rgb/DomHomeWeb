@@ -1,5 +1,5 @@
 @php
-    $notifications = App\Notification::where('address_id', Auth::user()->address_id)->count()
+    if(Auth::check())$notifications = App\Notification::where('address_id', Auth::user()->address_id)->where('viewed',0)->count()
 @endphp
 
 <!doctype html>
@@ -53,7 +53,12 @@
                             </li>
 
                             <button type="button" class="btn btn-light" onclick="location.href='{{ route('notification') }}'">
-                                Notifications <span class="badge badge-secondary">{{$notifications}}</span>
+                                Notifications
+                                <span class="badge badge-secondary">
+                                    @if ($notifications >= 1)
+                                        {{$notifications}}
+                                    @endif
+                                </span>
                             </button>
                         @endif
                     </ul>
