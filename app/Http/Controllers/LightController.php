@@ -11,6 +11,11 @@ use App\Light;
 
 class LightController extends Controller
 {
+    /**
+     * Display a listing of the light settings.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
         $schedule =
@@ -28,6 +33,12 @@ class LightController extends Controller
         return view('light', compact('schedule', 'lights'));
     }
 
+    /**
+     * Set one or a group of time configurations.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function set(Request $request) //POST
     {
         //print_r($request->all());
@@ -48,6 +59,12 @@ class LightController extends Controller
         return back()->with('set','Configuración exitosa');
     }
 
+    /**
+     * Power on/off a light.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function power(Request $request)
     {
         //print_r($request->all());
@@ -64,6 +81,12 @@ class LightController extends Controller
         return back()->with('power','Configuración exitosa');
     }
 
+    /**
+     * Delete a time configurations.
+     *
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
     public function deleteOne($id)
     {
         $update = [
@@ -79,6 +102,12 @@ class LightController extends Controller
         return back()->with('deleteAll','Eliminación exitosa');
     }
 
+    /**
+     * Delete all time configurations.
+     *
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
     public function deleteAll()
     {
         $update = [

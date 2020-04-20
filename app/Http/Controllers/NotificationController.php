@@ -10,6 +10,11 @@ use App\Notification;
 
 class NotificationController extends Controller
 {
+    /**
+     * Display a listing of the light settings.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
         $notifications =
@@ -20,6 +25,12 @@ class NotificationController extends Controller
         return view('notification', compact('notifications'));
     }
 
+    /**
+     * Change the viewed status.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function viewed($_id)
     {
         $update = [
@@ -33,6 +44,5 @@ class NotificationController extends Controller
         );
 
         return back()->with('viewed','Configuración exitosa');
-
     }
 }

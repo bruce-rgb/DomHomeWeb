@@ -9,9 +9,13 @@ use App\Fan;
 
 class FanController extends Controller
 {
+    /**
+     * Display a listing of the fan settings.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
-
         $fan =
             Fan::where('address_id', Auth::user()->address_id )
             ->get();
@@ -21,6 +25,12 @@ class FanController extends Controller
         return view('fan', compact('fan'));
     }
 
+    /**
+     * Change the fan on mode
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function mode(Request $request)
     {
         //print_r($request->all());
@@ -38,6 +48,12 @@ class FanController extends Controller
         return back()->with('set-mode','Configuración exitosa');
     }
 
+    /**
+     * Power on/off the fan
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function power(Request $request)
     {
         //print_r($request->all());
@@ -55,6 +71,12 @@ class FanController extends Controller
         return back()->with('power','Configuración exitosa');
     }
 
+    /**
+     * Change the fan on temperature
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function temperature(Request $request)
     {
         //print_r($request->all());

@@ -10,6 +10,11 @@ use App\Schedule;
 
 class SecurityController extends Controller
 {
+    /**
+     * Display a listing of the light settings.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
         $schedule =
@@ -21,6 +26,12 @@ class SecurityController extends Controller
         return view('security', compact('schedule'));
     }
 
+    /**
+     * Set one or a group of time configurations.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function set(Request $request)
     {
         //print_r($request->all());
@@ -42,6 +53,12 @@ class SecurityController extends Controller
 
     }
 
+    /**
+     * Delete a time configurations.
+     *
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
     public function deleteOne($id)
     {
         $update = [
@@ -57,6 +74,12 @@ class SecurityController extends Controller
         return back()->with('deleteAll','Eliminación exitosa');
     }
 
+    /**
+     * Delete all time configurations.
+     *
+     * @param  string  $id
+     * @return \Illuminate\Http\Response
+     */
     public function deleteAll()
     {
         $update = [
