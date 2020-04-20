@@ -12,6 +12,7 @@ $factory->define(Light::class, function (Faker $faker) {
         'name' => $faker->randomElement($array = array ('light 1','light 2')),
         'status' => $faker->randomElement($array = array ('on','off')),
 
-        'address_id' => Address::All()->random()->_id,
+        'address_id' => null,
+        //'address_id' => Address::All()->random()->_id,
     ];
 });

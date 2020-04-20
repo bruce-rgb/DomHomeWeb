@@ -13,6 +13,7 @@ $factory->define(Schedule::class, function (Faker $faker) {
         'day' => $faker->randomElement($array = array ('monday','tuesday','wednesday','thursday','friday','saturday','sunday')),
         'start_time' => $faker->time(),
         'end_time' => $faker->time(),
-        'address_id' => Address::all()->random()->_id,
+        'address_id' => null,
+        //'address_id' => Address::all()->random()->_id,
     ];
 });

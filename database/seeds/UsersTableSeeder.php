@@ -23,7 +23,8 @@ class UsersTableSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
             'remember_token' => Str::random(10),
-            'address_id' => Address::all()->random()->_id,
+            'address_id' => null,
+            //'address_id' => Address::all()->random()->_id,
         ]);
 
     }

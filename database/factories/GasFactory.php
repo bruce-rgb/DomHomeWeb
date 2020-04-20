@@ -12,6 +12,7 @@ $factory->define(Gas::class, function (Faker $faker) {
         'name' => 'Gas',
         'status' => $faker->randomElement($array = array ('on','off')),
         'time' => '01:30:00',
-        'address_id' => Address::all()->random()->_id,
+        'address_id' => null,
+        //'address_id' => Address::all()->random()->_id,
     ];
 });

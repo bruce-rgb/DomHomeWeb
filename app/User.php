@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 //MongoDB Eloquent Model
 use Jenssegers\Mongodb\Eloquent\Model as Model;
+use App\Address;
 class User extends Model implements Authenticatable
 {
     use AuthenticableTrait;
@@ -41,4 +42,14 @@ class User extends Model implements Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The relationship with Address model, one or many Users belongs to one Address
+     *
+     * @return void
+     */
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
+    }
 }

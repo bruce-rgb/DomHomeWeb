@@ -13,7 +13,7 @@ class NotificationController extends Controller
     public function index()
     {
         $notifications =
-            Notification::where('address_id', Auth::user()->address_id )
+            Notification::where('address_id', Auth::user()->address_id)->orderBy('created_at','DESC')
             ->get();
         $notifications = json_decode(json_encode($notifications),true);
 

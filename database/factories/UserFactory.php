@@ -28,6 +28,7 @@ $factory->define(User::class, function (Faker $faker) {
         //'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'password' => bcrypt('password'),
         'remember_token' => Str::random(10),
-        'address_id' => Address::all()->random()->_id,
+        'address_id' => null,
+        //'address_id' => Address::all()->random()->_id,
     ];
 });

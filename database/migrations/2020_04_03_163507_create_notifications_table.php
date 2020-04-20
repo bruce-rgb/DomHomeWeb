@@ -17,7 +17,6 @@ class CreateNotificationsTable extends Migration
             //$table->bigIncrements('id');
             $table->string('name');
             $table->mediumText('description');
-            $table->time('hour');
             $table->boolean('viewed');
 
             //relaciones

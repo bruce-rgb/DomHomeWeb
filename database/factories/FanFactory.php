@@ -13,6 +13,7 @@ $factory->define(Fan::class, function (Faker $faker) {
         'mode' => $faker->randomElement($array = array ('auto','manual')),
         'status' => $faker->randomElement($array = array ('on','off')),
         'temperature' => 25,
-        'address_id' => Address::all()->random()->_id,
+        'address_id' => null,
+        //'address_id' => Address::all()->random()->_id,
     ];
 });
