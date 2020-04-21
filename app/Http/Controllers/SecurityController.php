@@ -37,7 +37,9 @@ class SecurityController extends Controller
         //print_r($request->all());
 
         $request->validate([
-            'days' => 'required'
+            'days' => 'required',
+            'end_time' => 'required',
+            'start_time' => 'required',
         ]);
 
         $update = [
