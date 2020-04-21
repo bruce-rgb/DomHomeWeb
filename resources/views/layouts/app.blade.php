@@ -89,9 +89,9 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item">
+                                    {{--<a class="dropdown-item">
                                         {{ 'address id: '.Auth::user()->address_id }}
-                                    </a>
+                                    </a>--}}
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
