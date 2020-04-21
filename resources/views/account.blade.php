@@ -20,52 +20,52 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputName">Name</label>
-                                <input type="text" class="form-control" id="inputName" value="{{$user->name}}">
+                                <input type="text" class="form-control" id="inputName" value="{{$user->name}}" readonly>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputLastName">Last Name</label>
-                                <input type="text" class="form-control" id="inputLastName" value="{{$user->last_name}}">
+                                <input type="text" class="form-control" id="inputLastName" value="{{$user->last_name}}" readonly>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="inputEmail">Email</label>
-                                <input type="email" class="form-control" id="inputEmail" value="{{$user->email}}">
+                                <input type="email" class="form-control" id="inputEmail" value="{{$user->email}}" readonly>
                             </div>
-                            <div class="form-group col-md-6">
+                            {{--<div class="form-group col-md-6">
                               <label for="inputPassword">Password</label>
-                              <input type="password" class="form-control" id="inputPassword" value="{{$user->password}}">
-                              </div>
+                              <input type="password" class="form-control" id="inputPassword" value="{{$user->password}}" readonly>
+                            </div>--}}
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="inputCity">City</label>
-                                <input type="text" class="form-control" id="inputCity" value="{{$address->city}}">
+                                <input type="text" class="form-control" id="inputCity" value="{{$address->city}}" readonly>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputState">State</label>
-                                <input type="text" class="form-control" id="inputState" value="{{$address->state}}">
+                                <input type="text" class="form-control" id="inputState" value="{{$address->state}}" readonly>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputCountry">Country</label>
-                                <input type="text" class="form-control" id="inputCountry" value="{{$address->country}}">
+                                <input type="text" class="form-control" id="inputCountry" value="{{$address->country}}" readonly>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="inputStreet">Street</label>
-                                <input type="text" class="form-control" id="inputStreet" value="{{$address->street}}">
+                                <input type="text" class="form-control" id="inputStreet" value="{{$address->street}}" readonly>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputNumber">Number</label>
-                                <input type="text" class="form-control" id="inputNumber" value="{{$address->number}}">
+                                <input type="text" class="form-control" id="inputNumber" value="{{$address->number}}" readonly>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputPIN">PIN</label>
-                                <input type="number" class="form-control" id="inputPIN" value="{{$address->PIN}}">
+                                <input type="number" class="form-control" id="inputPIN" value="{{$address->PIN}}" readonly>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Accept</button>
+                        {{--<button type="submit" class="btn btn-primary">Accept</button>--}}
                     </form>
 
                 </div>
