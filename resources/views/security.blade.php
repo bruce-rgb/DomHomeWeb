@@ -44,13 +44,13 @@
                                                 <div class="form-group row">
                                                     <label for="start_time" class="col-sm-4 col-form-label">Start Time</label>
                                                     <div class="col-sm-8">
-                                                        <input type="time" class="form-control" id="start_time" name="start_time" required>
+                                                        <input type="time" class="form-control" id="start_time" name="start_time" value="{{old('start_time')}}" required>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="end_time" class="col-sm-4 col-form-label">End Time</label>
                                                     <div class="col-sm-8">
-                                                        <input type="time" class="form-control" id="end_time" name="end_time" required>
+                                                        <input type="time" class="form-control" id="end_time" name="end_time" value="{{old('end_time')}}" required>
                                                     </div>
                                                 </div>
 
@@ -60,8 +60,12 @@
                                                         <label class="form-check-label" for="inlineCheckbox{{$loop->iteration}}">{{$day['day']}}</label>
                                                     </div>
                                                 @endforeach
-
                                                 <br><br>
+
+                                                @error('days')
+                                                    <div class="alert alert-danger">You must select at least one day</div>
+                                                @enderror
+
                                                 <button type="submit" class="btn btn-success btn-block">Save</button>
                                             </form>
                                         </div>
@@ -79,7 +83,7 @@
                                                     <form action="{{route('security-deleteAll')}}" method="POST">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
-                                                        <button type="submit" onclick="return confirm('¿Borrar?');">Delete all</button>
+                                                        <button class="btn btn-danger" type="submit" onclick="return confirm('Delete all?');">Delete all</button>
                                                     </form>
                                                 </th>
                                             </tr>
@@ -103,6 +107,13 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+
+                                    @if(session('set'))
+                                        <div class="alert alert-success mt-3" role="alert">
+                                            {{session('set')}}
+                                        </div>
+                                    @endif
+
                                 </div>
 
                             </div>
@@ -113,24 +124,29 @@
                             <br>
                             <div class="row">
                                 <div class="text-center col-sm-7 col-12">
-                                    <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tKi9Z-f6qX4?rel=0" allowfullscreen></iframe>
+                                    <div class="embed-responsive embed-responsive-4by3">
+                                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/SfZIzErHInA?rel=0" allowfullscreen></iframe>
                                     </div>
                                 </div>
                                 <div class="col-sm-5 col-12">
                                     <div class="card">
                                         <div class="card-body">
-                                        <h5 class="card-title text-center">{{ __('Data') }}</h5>
-                                        <button type="button" class="btn btn-light" onclick="location.href='{{ route('notification') }}'">
-                                            Data <span class="badge badge-secondary">4</span>
-                                        </button>
+                                        <h5 class="card-title text-center">{{ __('Stop stream') }}</h5>
+                                        <button type="submit" class="btn btn-success btn-block">Ok</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="nav-door" role="tabpanel" aria-labelledby="nav-door-tab">
-                            Door
+                            <div class="col-sm-12 col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                    <h5 class="card-title text-center">{{ __('Open Door') }}</h5>
+                                    <button type="submit" class="btn btn-success btn-block">Ok</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

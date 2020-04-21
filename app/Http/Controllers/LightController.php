@@ -43,6 +43,10 @@ class LightController extends Controller
     {
         //print_r($request->all());
 
+        $request->validate([
+            'days' => 'required'
+        ]);
+
         $update = [
             'start_time' => $request->input('start_time'),
             'end_time' => $request->input('end_time'),
